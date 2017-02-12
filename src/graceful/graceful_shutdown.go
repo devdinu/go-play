@@ -13,6 +13,7 @@ func PingHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("Ponged...")
 	w.Write([]byte("pong"))
 }
+
 func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/ping", PingHandler)
