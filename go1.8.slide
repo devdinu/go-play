@@ -1,0 +1,37 @@
+Go 1.8 Features
+16 Feb 2016
+
+Dinesh Kumar
+https://github.com/dineshkumar-cse
+
+* GOPATH
+
+- $HOME/go Unix,MAC 
+- %USERPROFILE%\go Windows
+
+    go env GOPATH
+
+* GC Pause
+*** Gopher
+
+.code src/trace1.part
+
+* GC Pause
+*** 2 GoRoutines
+.code src/trace2.part
+
+* Verify
+
+- Trace Tool
+
+    go install
+    GODEBUG=gctrace=1 GOGC=10 $GOBIN/trace
+    go tool trace -http=':1234' dumps/go1.8.trace
+
+* HTTP ShutDown
+
+- Listen on Signal (Interrupt) to gracefully shutdown server
+  
+    server.Shutdown(context.Background())
+
+.code src/graceful/graceful_shutdown.go /START OMIT/,/END OMIT/

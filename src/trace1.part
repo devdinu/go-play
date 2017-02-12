@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"runtime/trace"
+	"sync"
+)
+
+type Gopher struct {
+	id   int
+	name string
+}
+
+func (g Gopher) Say() {
+	fmt.Println("Hi, I'm gopher:", g.id, "creator:", g.name)
+}
+
