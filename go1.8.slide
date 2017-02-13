@@ -4,6 +4,13 @@ Go 1.8 Features
 Dinesh Kumar
 https://github.com/dineshkumar-cse
 
+Rajeev BharShetty
+https://github.com/rShetty
+
+* Go Release 1.8
+
+.image images/gopher_party1.8.png _ 500
+
 * GOPATH
 
 - $HOME/go Unix,MAC 
@@ -35,3 +42,7 @@ https://github.com/dineshkumar-cse
     server.Shutdown(context.Background())
 
 .code src/graceful/graceful_shutdown.go /START OMIT/,/END OMIT/
+
+* Slice Sort
+
+.code src/slicesort/sort_gophers.go
