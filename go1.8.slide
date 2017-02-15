@@ -27,6 +27,14 @@ https://github.com/rShetty
 *** 2 GoRoutines
 .code src/trace2.part
 
+* STW why?
+
+- Tricolor GC (Black, Grey, White)
+- Write Barriers
+- STW (To Ensure that No White Nodes is referred)
+- Free nodes which are White
+.link https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md Eliminate Rescan Proposal
+
 * Verify
 
 - Trace Tool
