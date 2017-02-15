@@ -7,10 +7,6 @@ https://github.com/dineshkumar-cse
 Rajeev BharShetty
 https://github.com/rShetty
 
-* Go Release 1.8
-
-.image images/gopher_party1.8.png _ 500
-
 * GOPATH
 
 - $HOME/go Unix,MAC 
@@ -19,6 +15,7 @@ https://github.com/rShetty
     go env GOPATH
 
 * GC Pause
+
 *** Gopher
 
 .code src/trace1.part
@@ -33,7 +30,8 @@ https://github.com/rShetty
 - Write Barriers
 - STW (To Ensure that No White Nodes is referred)
 - Free nodes which are White
-.link https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md Eliminate Rescan Proposal
+
+.link https://blog.pusher.com/golangs-real-time-gc-in-theory-and-practice/ Tricolor Gc
 
 * Verify
 
@@ -54,3 +52,33 @@ https://github.com/rShetty
 * Slice Sort
 
 .code src/slicesort/sort_gophers.go
+
+* Encoding/base64
+
+- Encoding.Strict returns error when trailing padding are not zero
+
+   data, err := base64.StdEncoding.Strict().DecodeString("WvLTlMrX9NpYDQlEIFlnDB==")
+
+
+* Digging deeper to Encoding/base64
+
+- Guess
+    "WvLTlMrX9NpYDQlEIFlnDB==" same as "WvLTlMrX9NpYDQlEIFlnDA==" ???
+
+.play -edit ./src/encoding/encoding.go /START OMIT/,/END OMIT/
+
+* References
+.link https://beta.golang.org/doc/go1.8 go1.8 doc
+.link https://tools.ietf.org/html/rfc4648#section-3.5 rfc46468 Canonical Encoding
+.link https://github.com/golang/go/issues/16721#issuecomment-241085266 Making Sort Easier
+.link https://blog.golang.org/go15gc go15gc
+.link https://github.com/golang/proposal/blob/master/design/17503-eliminate-rescan.md Eliminate Rescan Proposal
+
+* Questions
+
+.image images/gopher_party1.8.png _ 500
+
+* License
+
+.image ./images/by-sa.png
+
