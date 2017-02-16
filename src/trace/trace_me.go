@@ -39,6 +39,6 @@ func traceProgram() {
 	wg.Wait()
 }
 
-//func main() {
-//	traceProgram()
-//}
+func main() {
+	traceProgram()
+}
