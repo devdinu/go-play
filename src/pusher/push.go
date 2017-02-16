@@ -15,5 +15,5 @@ func main() {
 		w.Write([]byte(`<img src="/static/gopher.png" />`))
 	}))
 
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServeTLS(":8080", "cert.pem", "key.pem", nil)
 }
