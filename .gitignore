@@ -1,1 +1,6 @@
 *.swp
+dumps/
+src/tools/tools
+src/trace/trace
+src/pprof/pprof
+

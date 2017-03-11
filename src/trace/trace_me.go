@@ -27,7 +27,7 @@ func traceProgram() {
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
 
-	f, _ := os.Create("./dumps/trace.pprof")
+	f, _ := os.Create("./dumps/trace.log")
 	defer f.Close()
 	defer trace.Stop()
 

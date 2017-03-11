@@ -1,0 +1,5 @@
+go vet
+golint
+trace
+pprof
+
