@@ -8,7 +8,7 @@ type Gopher struct {
 }
 
 func lint() {
-	someUrl := "http://google.com"
+	someUrl := "http://google.com" // HL
 	fmt.Println("Linters check...")
 	fmt.Println(someUrl)
 }

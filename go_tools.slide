@@ -1,0 +1,56 @@
+Go Tools
+11 March 2016
+
+Dinesh Kumar
+https://github.com/dineshkumar-cse
+
+* go tool vet
+- examines Go source code and reports suspicious constructs
+.code src/tools/vet_this.go
+
+* go tool vet .
+
+- result:
+  ➜  go vet .
+  vet_this.go:7: arg val for printf verb %s of wrong type: int
+  vet_this.go:18: suspect or: x != 1 || x != 2
+
+* golint
+- Gofmt reformats Go source code, whereas golint prints out style mistakes.
+.code src/tools/lint_this.go
+
+* golint .
+- result:
+   ➜  golint .
+   lint_this.go:5:6: exported type Gopher should have comment or be unexported
+   lint_this.go:11:2: var someUrl should be someURL
+
+* go test
+- Run tests in all packages
+    go test $(go list ./...)
+- using glide:
+    go test $(glide novendor)
+.code src/local.sh /START OMIT/,/END OMIT/
+
+* go tool trace
+- Trace is a tool for viewing trace files.
+.code src/trace/trace_me.go /START OMIT/,/END OMIT/
+
+* go tool pprof
+   import _ "net/http/pprof"
+
+- Package pprof serves via its HTTP server runtime profiling data in the format expected by the pprof visualization tool.
+
+
+* References
+.link https://github.com/golang/lint golint
+.link https://golang.org/cmd/vet/ vet
+.link https://golang.org/pkg/net/http/pprof/ http pprof
+.link https://golang.org/cmd/trace/ trace
+.link https://golang.org/pkg/testing/ go test
+.link http://blog.ralch.com/tutorial/golang-tools-inspection/ golang tools
+
+* License
+
+.image ./images/by-sa.png
+

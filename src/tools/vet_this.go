@@ -15,7 +15,7 @@ func vet() {
 }
 
 func suspiciousIf(x int) {
-	if x != 1 || x != 2 {
+	if x != 1 || x != 2 { // HL
 		fmt.Println("This will be always True!!!")
 	}
 }

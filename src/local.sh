@@ -8,6 +8,8 @@ function lint {
     return $ERROR
 }
 
+// START OMIT
+
 function coverage {
     PROJECT_DIR=$PWD
     find $PROJECT_DIR -iname 'coverage*.out' -delete
@@ -17,6 +19,7 @@ function coverage {
     find . -iname 'coverage.out' -exec grep -v 'mode:' {} \; >> $PROJECT_DIR/coverage-all.out
 	cd $PROJECT_DIR && go tool cover -html=$PROJECT_DIR/coverage-all.out
 }
+// END OMIT
 
 echo "Running golint..."
 lint

@@ -23,15 +23,16 @@ func doSomething(name string, limit int, wg *sync.WaitGroup) {
 	}
 }
 
+// START OMIT
 func traceProgram() {
 	wg := &sync.WaitGroup{}
 	wg.Add(2)
 
 	f, _ := os.Create("./dumps/trace.log")
 	defer f.Close()
-	defer trace.Stop()
+	defer trace.Stop() // HL
 
-	trace.Start(f)
+	trace.Start(f) // HL
 	someLimit := 9000
 	go doSomething("Hundred", someLimit, wg)
 	go doSomething("Fifty", someLimit/3, wg)
@@ -39,6 +40,7 @@ func traceProgram() {
 	wg.Wait()
 }
 
+// END OMIT
 func main() {
 	traceProgram()
 }
