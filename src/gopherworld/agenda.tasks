@@ -1,0 +1,20 @@
+Dinesh Kumar
+Product Engineer @ Go-Jek
+
+github: dineshkumar-cse
+
+mail: dineshkumar_cse@hotmail.com
+twitter: dinesh_kumar_b
+
+Agenda:
+
+Basic:
+  - short intro TDD
+  - testify/assert
+
+Intermediate:
+  - testify/mock
+    - understand interfaces 
+  - unit tests (short), integration tests (long)
+
+Suite?
