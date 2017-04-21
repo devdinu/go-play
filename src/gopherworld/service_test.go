@@ -20,8 +20,19 @@ func TestFailureTallestGopherWithEmptySlice(t *testing.T) {
 
 func TestShouldReturnGopherWhenOnlyOneIsGiven(t *testing.T) {
 	g := Gopher{name: "tallest", height: 1.0}
+
 	tg, err := tallest([]Gopher{g})
 
 	assert.NoError(t, err)
 	assert.Equal(t, g, tg)
+}
+
+func TestShouldReturnTallestAmongMultipleGophers(t *testing.T) {
+	g1 := Gopher{name: "secondTallest", height: 1.0}
+	g2 := Gopher{name: "tallest", height: 2.0}
+
+	tg, err := tallest([]Gopher{g1, g2})
+
+	assert.NoError(t, err)
+	assert.Equal(t, Gopher{name: "tallest", height: 2.0}, tg)
 }
