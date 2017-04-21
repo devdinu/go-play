@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -33,6 +34,15 @@ func TestShouldReturnTallestAmongMultipleGophers(t *testing.T) {
 
 	tg, err := tallest([]Gopher{g1, g2})
 
-	assert.NoError(t, err)
-	assert.Equal(t, Gopher{name: "tallest", height: 2.0}, tg)
+	if err != nil {
+		fmt.Printf("Should Not Throw any Error, but got: %s", err.Error())
+		t.FailNow()
+	}
+	expectedGopher := Gopher{name: "tallest", height: 2.0}
+	if expectedGopher != tg {
+		fmt.Println("Not Equal")
+		fmt.Printf("Expected: %s", expectedGopher)
+		fmt.Printf("Actual: %s", tg)
+		t.FailNow()
+	}
 }
