@@ -39,7 +39,7 @@ func (t *transport) RoundTrip(req *http.Request) (resp *http.Response, err error
 	return resp, nil
 }
 
-func main() {
+func bla() {
 	target, err := url.Parse("https://www.google.com")
 	if err != nil {
 		panic(err)

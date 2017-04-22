@@ -1,11 +1,3 @@
-Dinesh Kumar
-Product Engineer @ Go-Jek
-
-github: dineshkumar-cse
-
-mail: dineshkumar_cse@hotmail.com
-twitter: dinesh_kumar_b
-
 Agenda:
 
 Basic:
@@ -14,7 +6,9 @@ Basic:
 
 Intermediate:
   - testify/mock
-    - understand interfaces 
-  - unit tests (short), integration tests (long)
+    - understand interfaces
+  - race
 
-Suite?
+To Ponder:
+ - integration tests with db
+ - unit tests (short), integration tests (long)
