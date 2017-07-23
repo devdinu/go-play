@@ -1,0 +1,20 @@
+
+        Agenda:
+
+         - Embedding
+         - Go Enforces :)
+         - Composition over inheritance
+         - Anonymous member
+         - Need:
+            - Overriding
+            - Reusing code
+
+            - When method is called its on inner type instead of outer
+            - what about the type it contains? vs extending in other languages
+         - UseCase
+
+        Code:
+         - Intro to middleware (code)
+         - log Status after Requests
+
+
