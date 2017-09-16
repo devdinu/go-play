@@ -1,0 +1,34 @@
+Gotchas
+16 Sept 2017
+
+Dinesh Kumar
+https://github.com/dineshkumar-cse
+
+* Gotchas
+- var x = nil | nil is the zero value for pointers, interfaces, channels, slices, maps and function types, and it represents an uninitialized state
+- slice is a reference
+- override bool
+
+* Gotchas
+- function receivers - will not change values if its non pointer
+- iteration of map data is random
+- range gives values, for mutation you need to use index
+
+* Goroutines
+- explicitly need to wait for the spawned goroutines (waitGroup / time)
+- request with context | goroutine with parent context
+
+* HTTP
+- set Timeouts
+- close response Body and closing at right place (after no error) ( if not it can result in file descriptor leak)
+- err = io.Copy(ioutil.Discard, resp.Body)  [Comments are welcome]
+- req.Close
+- recover
+
+* References:
+ - http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang
+
+* License
+
+.image ./images/by-sa.png
+
