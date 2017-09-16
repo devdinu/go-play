@@ -3,4 +3,6 @@ dumps/
 src/tools/tools
 src/trace/trace
 src/pprof/pprof
-coverage.*out
+**/coverage.out
+**/coverage-all.out
+src/gotchas/gotchas
