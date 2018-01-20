@@ -1,0 +1,20 @@
+Why?
+ - Gc Pause Time (submicros...submillis)
+ - Interfaces
+ - http server inbuild
+ - testing
+
+Basics:
+  - idiomatic code
+    * add govet, lint, (fmt integrated editor)
+    * errors, errcheck
+  - context
+  - dependencies
+  - logger 
+  - loading configuration
+  - package structure (cyclic dependency !!!)
+
+Debug:
+  - file descriptors issue
+  - defer r.Body.Close()
+  - trace, pprof to debug

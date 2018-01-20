@@ -14,6 +14,11 @@ func main() {
 	http.HandleFunc("/ping", http.HandlerFunc(ping))
 	http.HandleFunc("/leak", http.HandlerFunc(leak))
 	http.HandleFunc("/slow_ping", http.HandlerFunc(slow))
+	http.HandleFunc("/test", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(200)
+		time.Sleep(time.Second * 5)
+		w.WriteHeader(500)
+	}))
 	port := os.Getenv("PORT")
 	fmt.Printf("starting server on %s", port)
 	http.ListenAndServe(":"+port, nil)
