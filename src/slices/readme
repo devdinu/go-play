@@ -1,0 +1,6 @@
+- [4]int and [5]int are distinct, incompatible types
+- func make([]T, len, cap) []T
+    len: total elements
+    cap: size of slice
+
+https://blog.golang.org/go-slices-usage-and-internals
