@@ -12,5 +12,5 @@ func TestFirstEvenNumberResult(t *testing.T) {
 	result := getFirstEven(data)
 
 	assert.Equal(t, 1, len(result))
-	assert.Equal(t, 10, *result[0])
+	assert.Equal(t, 10, *result[0], "Why This Test Fails!")
 }

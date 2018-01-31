@@ -1,5 +1,5 @@
 # Go Play
- Samples of golang code
+ Samples of golang code and experiments
 
 ## Content
  - Experimenting go1.8 features
@@ -12,6 +12,7 @@
 - [Testing in go](https://youtu.be/zGhfJ88eKfw) Golang Meetup XXI
 - [Embedding in go screencast](https://youtu.be/Ki3kUvEx4-8) Golang Meetup XXV
 - [gotchas in go](http://talks.godoc.org/github.com/dineshkumar-cse/go-play/gotchas.slide) Golang Meetup XXVI [screencast](https://youtu.be/J3plALnTjA8)
+- [slice of Slices](https://goo.gl/NTmsqf) at [Golang Meetup](https://www.meetup.com/Golang-Bangalore/events/246437796/) XXVIII
 
 
 ## Local Script

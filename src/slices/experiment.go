@@ -13,14 +13,13 @@ func slices(total int) {
 	}
 }
 
-func getFirstEven(data []int) *[]*int {
+func getFirstEven(data []int) []*int {
 	var result []*int
 	for _, e := range data {
 		fmt.Printf("%v\n data: %d\n", &e, e)
 		if e%2 == 0 {
 			fmt.Println("This is the place", e)
-			bla := e
-			result = append(result, &bla)
+			result = append(result, &e)
 		}
 	}
 	fmt.Println(result)
