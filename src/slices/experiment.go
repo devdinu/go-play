@@ -9,7 +9,7 @@ func slices(total int) {
 	s := make([]int, 0, 3)
 	for i := 0; i < total; i++ {
 		s = append(s, i)
-		fmt.Printf("cap %v, len %v, %p\n", cap(s), len(s), s)
+		inspect(s)
 	}
 }
 
@@ -31,4 +31,8 @@ func slicing(sl []int) {
 	fmt.Printf("%+v, %p\n", sl, &sl)
 	slx := sl[2:]
 	fmt.Printf("%+v, %p\n", slx, &slx)
+}
+
+func inspect(s []int) {
+	fmt.Printf("cap %v, len %v, start address: %p\n", cap(s), len(s), s)
 }
