@@ -1,0 +1,81 @@
+Go 1.10 
+
+24 Feb 2018
+
+Dinesh Kumar
+Product Engineer, Gojek
+
+https://github.com/devdinu
+
+@devdineshkumar
+
+
+* Release
+- toolchain, runtime and libs
+
+* Test
+
+- runs vet automatically during tests
+    go test -vet=off
+
+- caches the test results [so cool] shows cached instead of time elapsed
+    go count=1 to skip cache
+
+- failfast flag disables running additional tests after any test fails
+     go test -failfast 
+
+
+* Changes
+- go get - supports Fossil source code repositories.
+- fix replaces imports of "golang.org/x/net/context" with "context"
+    go tool fix . 
+
+
+* Changes
+- go get - supports Fossil source code repositories.
+- pprof includes symbol information (binay isn't required)
+- go tool vet does not and should be avoided 
+
+- no more GOROOT pain
+- [[https://golang.org/doc/diagnostics.html][Diagnostics]] better doc :)
+
+* gofmt
+- keeps single method interface in oneline :)
+- Three index slicing is formatted properly
+     x[i+1 : j:k] as x[i+1 : j : k]
+
+* Three index slicing
+.code src/slices/cappedslice.go
+
+* Compiler toolchain
+- DWARF debug information
+
+
+* Runtime
+- less CPU utilization
+- GC less allocation latency and performance overhead
+
+* Core library
+   
+   archive, bufio, bytes, crypto
+
+* Bufio
+- Reader Writer has Size method
+.play src/go1.10/main.go
+
+* bytes
+- The [[https://golang.org/pkg/bytes/#Fields][Fields]], [[https://golang.org/pkg/bytes/#FieldsFunc][FieldsFunc]], Split, and SplitAfter used to return subslices of their inputs. 
+- now returns subslice which has capacity equal to its length, so that appending to one cannot overwrite adjacent data in the original input.
+.play src/go1.10/splits.go /^func split/,/^}/
+
+* encoding
+- asn1, csv, hex, json
+- json: DisallowUnknownFields errors when json has more fields
+
+* net/http
+- HTTP2 as proxy in client side
+
+* Resources
+.link https://golang.org/doc/go1.10 go1.10 Release
+.link https://golang.org/doc/diagnostics.html Diagnostics Doc
+.link https://www.ardanlabs.com/blog/2013/12/three-index-slices-in-go-12.html Three index slices
