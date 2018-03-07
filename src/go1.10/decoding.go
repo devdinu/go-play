@@ -12,11 +12,12 @@ type gopher struct {
 }
 
 func encode() {
-	data := `{"id":1,"name":"lilgopher"}`
+	data := `{"id":1,"name":"lilgopher", "x": 1}`
 
 	g := gopher{}
 	decoder := json.NewDecoder(strings.NewReader(data))
-	decoder.DisallowUnknownFields()
+	// With DisallowUnknownFields option it will panic when we run this or remove 'x' field from data
+	// decoder.DisallowUnknownFields()
 	if err := decoder.Decode(&g); err != nil {
 		panic(err)
 	}

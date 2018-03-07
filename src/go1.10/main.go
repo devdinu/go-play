@@ -17,5 +17,5 @@ func main() {
 	r.Read(data)
 	w.Write(data)
 	fmt.Printf("Size writer: %d, reader: %d\n", w.Size(), r.Size()) // HL
-	//encode()
+	encode()                                                        //OMIT
 }

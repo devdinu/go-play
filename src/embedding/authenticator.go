@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io"
 	"net/http"
 )
 
@@ -23,7 +21,5 @@ func Authenticator(next http.HandlerFunc) http.HandlerFunc {
 		fmt.Printf("called: url: %s, statuscode: %d\n", r.URL.Path, crw.StatusCode)
 	}
 
-	bufio.Reader
-	io.Reader
 	return http.HandlerFunc(authHandler)
 }

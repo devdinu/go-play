@@ -1,5 +1,3 @@
 package main
 
-type Foo interface {
-	bar(string) error
-}
+type Foo interface{ bar(string) error }

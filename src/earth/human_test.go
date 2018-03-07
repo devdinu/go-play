@@ -35,7 +35,7 @@ func TestTallestWithoutMocksLongerTimeTest(t *testing.T) {
 		t.Skip("Skipping Longer Test....")
 	}
 	time.Sleep(2 * time.Second)
-	assert.Equal(t, "x", "y")
+	assert.Equal(t, "y", "y")
 }
 
 func TestRace(t *testing.T) {

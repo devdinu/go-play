@@ -32,9 +32,8 @@ https://github.com/devdinu
 
 
 * Changes
-- go get - supports Fossil source code repositories.
 - pprof includes symbol information (binay isn't required)
-- go tool vet does not and should be avoided 
+- go tool vet does not include all rules and should be avoided 
 
 - no more GOROOT pain
 - [[https://golang.org/doc/diagnostics.html][Diagnostics]] better doc :)
@@ -75,7 +74,9 @@ https://github.com/devdinu
 * net/http
 - HTTP2 as proxy in client side
 
+
 * Resources
 .link https://golang.org/doc/go1.10 go1.10 Release
 .link https://golang.org/doc/diagnostics.html Diagnostics Doc
+- go get - supports Fossil source code repositories.
 .link https://www.ardanlabs.com/blog/2013/12/three-index-slices-in-go-12.html Three index slices

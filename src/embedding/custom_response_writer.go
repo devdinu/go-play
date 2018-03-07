@@ -1,8 +1,6 @@
 package main
 
 import (
-	"io"
-	"io/ioutil"
 	"net/http"
 )
 
@@ -14,6 +12,4 @@ type CustomResponseWriter struct {
 func (cw *CustomResponseWriter) WriteHeader(status int) {
 	cw.StatusCode = status
 	cw.ResponseWriter.WriteHeader(status)
-	io.ReadCloser
-	ioutil.NopCloser
 }

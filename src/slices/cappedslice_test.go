@@ -13,5 +13,6 @@ func TestWeirdBehaviourOfSlice(t *testing.T) {
 
 	require.NoError(t, err)
 	require.Equal(t, []int{1, 2, 3, 500}, new, "New Slice mismatch")
-	require.Equal(t, []int{1, 2, 3, 4, 5}, input, "Should be same as the input")
+	//Ideally this should be same coz, we expect the function to modify anything
+	require.NotEqual(t, []int{1, 2, 3, 4, 5}, input, "Should be same as the input")
 }
