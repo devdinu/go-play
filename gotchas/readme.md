@@ -1,0 +1,2 @@
+- Use go run filename.go to run each examples
+- reference in slide ../gotchas.slide

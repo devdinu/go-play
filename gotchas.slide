@@ -1,34 +1,57 @@
 Gotchas
-16 Sept 2017
+09 March 2018
 
 Dinesh Kumar
-https://github.com/dineshkumar-cse
+Product Engineer, Gojek
+
+https://github.com/devdinu
+
+@devdineshkumar
 
 * Gotchas
-- var x = nil | nil is the zero value for pointers, interfaces, channels, slices, maps and function types, and it represents an uninitialized state
-- slice is a reference
-- override bool
+- var x Type // default nil
+- nil is the zero value for pointers, interfaces, channels, slices, maps and function types, and it represents an uninitialized state
+- slice is a reference (*ptr, len, cap)
+
+* Gotchas
+.play -edit ./src/refresh/debugging.go
 
 * Gotchas
 - function receivers - will not change values if its non pointer
 - iteration of map data is random
 - range gives values, for mutation you need to use index
 
+* Weird slicing
+    WierdSlice([]int{1, 2, 3, 4, 5}, 2)
+.play -edit ./gotchas/slice_mutate.go /^func WierdSlice/,/^}/
+
+* Calling on nil
+.play ./gotchas/nil_call.go 
+
+
+* Addressable
+.play -edit ./gotchas/addresseable.go
+
 * Goroutines
+- waiting on <-channel will block if there's no sender
 - explicitly need to wait for the spawned goroutines (waitGroup / time)
 - request with context | goroutine with parent context
+- use for { select { case } } and ensure you close goroutine on os.Signal or from a channel or ctx.Done()
+
+* Stack and Heap
+- compiler decides whether to allocate in heap or stack, so its fine to return a reference to local variable
 
 * HTTP
 - set Timeouts
 - close response Body and closing at right place (after no error) ( if not it can result in file descriptor leak)
-- err = io.Copy(ioutil.Discard, resp.Body)  [Comments are welcome]
+- err = io.Copy(ioutil.Discard, resp.Body)
 - req.Close
 - recover
 
 * References:
  - http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang
+ - https://medium.com/golangspec/detect-locks-passed-by-value-in-go-efb4ac9a3f2b
 
 * License
-
 .image ./images/by-sa.png
 

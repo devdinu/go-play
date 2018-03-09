@@ -15,3 +15,7 @@ func playBool() {
 		fmt.Println("this should be true!")
 	}
 }
+
+func main() {
+	playBool()
+}

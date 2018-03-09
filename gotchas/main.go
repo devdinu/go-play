@@ -30,6 +30,7 @@ func mutate(data [3]int) {
 
 func arrayMutate() {
 	d := [3]int{1, 3, 5}
+	fmt.Println("before mutation:", d)
 	mutate(d)
-	fmt.Println("after:", d)
+	fmt.Println("after mutation:", d)
 }
