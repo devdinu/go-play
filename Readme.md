@@ -1,5 +1,8 @@
 # Go Play
+[![Build Status](https://travis-ci.org/devdinu/go-play.svg?branch=master)](https://travis-ci.org/devdinu/go-play)
+
  Samples of golang code and experiments
+
 
 ## Content
  - Experimenting go1.8 features

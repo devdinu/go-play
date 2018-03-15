@@ -1,0 +1,14 @@
+language: go
+
+go:
+  - "1.10"
+
+before_install:
+  - go get -u github.com/golang/dep/cmd/dep
+
+install:
+  - cd src && dep ensure -v
+
+script:
+  - go test ./... -vet=off
+
