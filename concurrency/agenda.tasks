@@ -1,0 +1,8 @@
+Concurrency:
+
+- Coordination
+    - time Sleep
+    - waitGroup
+
+- communicate by sharing (sync.Mutex/sync.RwMutex)
+- share by communicating (channels)
