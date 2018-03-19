@@ -1,6 +1,7 @@
 package concurrency
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -9,15 +10,13 @@ func Add(data []int, split int) int {
 	end := 0
 	sum := make(chan int, 1)
 	var wg sync.WaitGroup
-	//SPLIT JOBS
 	for end < len(data) {
 		end = start + split
 		if end > len(data) {
 			end = len(data)
 		}
 		wg.Add(1)
-		//fmt.Println("split:", start, end)
-		// instantiating separate gorouting to sum slice
+		// instantiating separate gorouting to sum sliced data
 		go add(data[start:end], sum, &wg)
 		start += split
 	}
@@ -29,27 +28,19 @@ func Add(data []int, split int) int {
 	close(sum)
 
 	s := <-totalSum
-	//fmt.Println("Final Sum:", s)
+	fmt.Println("Final Sum:", s)
 	return s
 }
 
 func collect(subsum <-chan int, totalSum chan<- int) {
-	//Collect results
 	total := 0
-	for {
-		//SUBSUM
-		s, ok := <-subsum
-		if !ok {
-			//fmt.Println("total sum: ", total)
-			totalSum <- total
-		}
-		//fmt.Println("received: subsum: ", s)
+	for s := range subsum {
 		total += s
 	}
+	totalSum <- total
 }
 
 func add(data []int, result chan<- int, wg *sync.WaitGroup) {
-	//fmt.Println(data)
 	defer wg.Done()
 	var sum int
 	for _, d := range data {

@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"sync"
 	"testing"
-	"time"
 
 	"github.com/bcicen/grmon"
 	"github.com/stretchr/testify/assert"
@@ -13,26 +12,23 @@ import (
 func TestConcurrentIncrementsChan(t *testing.T) {
 	grmon.Start()
 	calls := 10
-	m := NewCounter()
 	done := make(chan bool, 1)
+	m := NewCounter(done)
 
 	var wg sync.WaitGroup
 	wg.Add(calls)
 
 	for i := 0; i < calls; i++ {
 		go func() {
-			time.Sleep(2 * time.Second)
 			m.Incr("incr.call")
 			wg.Done()
 		}()
 	}
 
 	wg.Wait()
-	m.Incr("END")
 	done <- true
 
 	fmt.Println("wating for completion")
-	<-done
 	m.Close()
 
 	result := m.Get("incr.call")
@@ -41,17 +37,19 @@ func TestConcurrentIncrementsChan(t *testing.T) {
 }
 
 func BenchmarkConcurrentIncrementChan(b *testing.B) {
-	//CHAN
-	c := NewCounter()
+	done := make(chan bool, 1)
+	c := NewCounter(done)
 	for i := 0; i < b.N; i++ {
 		c.Incr("increment.call")
 	}
+	done <- true
 }
 
 func BenchmarkConcurrentIncrementLock(b *testing.B) {
-	//LOCK
+	done := make(chan bool, 1)
 	m := NewMetrics()
 	for i := 0; i < b.N; i++ {
 		m.Incr("increment.call")
 	}
+	done <- true
 }

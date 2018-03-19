@@ -5,28 +5,28 @@ import (
 	"sync"
 )
 
-type metric struct {
+type Metric struct {
 	data map[string]int
 	sync.Mutex
 }
 
-func (m *metric) Incr(key string) {
+func (m *Metric) Incr(key string) {
 	m.Mutex.Lock()
 	defer m.Mutex.Unlock()
 
-	m.data[key] += 1
+	m.data[key]++
 }
 
-func (m *metric) Report() {
+func (m *Metric) Report() {
 	for k, v := range m.data {
-		fmt.Sprintf("%s: %d", k, v)
+		fmt.Printf("%s: %d", k, v)
 	}
 }
 
-func (m *metric) Get(key string) int {
+func (m *Metric) Get(key string) int {
 	return m.data[key]
 }
 
-func NewMetrics() *metric {
-	return &metric{data: make(map[string]int, 1000)}
+func NewMetrics() *Metric {
+	return &Metric{data: make(map[string]int, 1000)}
 }

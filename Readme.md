@@ -101,7 +101,7 @@ type metric struct {
 ...
 
 func (m *metric) Incr(key string) {
-	m.data[key] += 1
+	m.data[key]++
 }
 ```
 
@@ -119,7 +119,7 @@ func (m *metric) Incr(key string) {
 	m.Mutex.Lock()
 	defer m.Mutex.Unlock()
 
-	m.data[key] += 1
+	m.data[key]++
 }
 ```
 
@@ -129,22 +129,23 @@ Alternatively, we could share data across goroutines using channels.
 
 ```
 
-type counter struct {
+type Counter struct {
 	occurence chan string
 	data      map[string]int
 }
 
-func (c *counter) Incr(key string) {
+func (c *Counter) Incr(key string) {
 	c.occurence <- key
 }
 
-func (c *counter) process() {
+func (c *Counter) process() {
 	for {
-		ok, key := <-c.occurence
-		if !ok { // Terimation case occurs, when chan is closed
+		select {
+		case key := <-c.occurence:
+			c.data[key]++
+		case <-c.stop:
 			return
 		}
-		c.data[key] += 1
 	}
 }
 
@@ -172,13 +173,10 @@ The collector sums up all the result of workers and returns the data with channe
 ```
 func collect(subsum <-chan int, totalSum chan<- int) {
 	total := 0
-	for {
-		s, ok := <-subsum
-		if !ok {
-			totalSum <- total
-		}
+	for s := range subsum {
 		total += s
 	}
+	totalSum <- total
 }
 ```
 
@@ -188,8 +186,12 @@ Know more about buffered channels, how the goroutines waits while writing/readin
 
 [share memory by communicating](https://blog.golang.org/share-memory-by-communicating)
 
-
 Look at gotchas code for more information.
+
+### Disclaimer
+
+The code is meant for playing, experimenting and understanding the concepts. Please follow [Effective Go](https://golang.org/doc/effective_go.html) for idiomatic go. please create issues / PR if you think any change should be accomodated.
+`go vet ` errors and `golint` suggestions have to be accomodated too.
 
 ## Slides of go meetup
 - [go1.8 slides](http://talks.godoc.org/github.com/dineshkumar-cse/go-play/go1.8.slide)
@@ -199,3 +201,4 @@ Look at gotchas code for more information.
 - [gotchas in go](http://talks.godoc.org/github.com/dineshkumar-cse/go-play/gotchas.slide) Golang Meetup XXVI [screencast](https://youtu.be/J3plALnTjA8)
 - [slice of Slices](https://goo.gl/NTmsqf) at [Golang Meetup](https://www.meetup.com/Golang-Bangalore/events/246437796/) XXVIII
 - [go 1.10 slides](https://talks.godoc.org/github.com/devdinu/go-play/go1.10.release.slide#9) [screencast](https://youtu.be/t-iiICzV-es)
+- [concurrency screencast](https://youtu.be/E03QTvgcJ8Q) Golang Meetup XXX

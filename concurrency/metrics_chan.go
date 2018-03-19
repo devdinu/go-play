@@ -4,46 +4,47 @@ import (
 	"fmt"
 )
 
-type counter struct {
+type Counter struct {
 	occurence chan string
 	data      map[string]int
+	stop      <-chan bool
 }
 
-func (c *counter) Incr(key string) {
+func (c *Counter) Incr(key string) {
 	c.occurence <- key
 }
 
-func (c *counter) process() {
-	//fmt.Println("processing...")
+func (c *Counter) process() {
 	for {
-		key := <-c.occurence
-		//		fmt.Println("received data")
-		if key == "END" {
+		select {
+		case key := <-c.occurence:
+			c.data[key]++
+		case <-c.stop:
 			return
 		}
-		c.data[key] += 1
 	}
 }
 
-func (c *counter) Report() {
+func (c *Counter) Report() {
 	for k, v := range c.data {
-		fmt.Sprintf("%s: %d", k, v)
+		fmt.Printf("%s: %d", k, v)
 	}
 }
 
-func (c *counter) Get(key string) int {
+func (c *Counter) Get(key string) int {
 	return c.data[key]
 }
 
-func NewCounter() *counter {
-	c := &counter{
+func NewCounter(close <-chan bool) *Counter {
+	c := &Counter{
 		data:      make(map[string]int, 1000),
 		occurence: make(chan string),
+		stop:      close,
 	}
 	go c.process()
 	return c
 }
 
-func (c *counter) Close() {
+func (c *Counter) Close() {
 	close(c.occurence)
 }
