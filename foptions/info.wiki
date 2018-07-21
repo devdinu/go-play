@@ -1,0 +1,29 @@
+=== Meetup 34 ===
+
+
+=== Functional Options ===
+* [ ] plain function args
+    * [ ] difficult to change
+    * [ ] permutation for requirements
+    * [ ] optional args?
+
+* [ ] Config Struct
+    * [ ] can't use the default values
+    * [ ] default without any customization? Config{}
+    * [ ] pointer to config, and pass nil
+    * [ ] mutating the value after initialization, what's the behaviour
+* [ ] Varargs
+    * [ ] contradicting multiple config
+
+* [ ] Functional Options
+    * [ ] variadic
+    * [ ] default cases
+    * [ ] configurable
+    * [ ] no nil/empty struct
+
+=== Locks ===
+* [ ] sync
+
+https://github.com/devdinu/middlers
+https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
+https://commandcenter.blogspot.com/2014/01/self-referential-functions-and-design.html
