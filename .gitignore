@@ -6,3 +6,4 @@ src/pprof/pprof
 **/coverage.out
 **/coverage-all.out
 src/gotchas/gotchas
+scratch
