@@ -12,6 +12,7 @@
  - struct embedding
  - slice
  - [go testing](https://www.youtube.com/watch?v=zGhfJ88eKfw&index=1&list=PLKXvA3W4l9pHh2Pq04qCutB9e16QHMc26) (checkout branch gopherworld, and see git commits)
+ - gRPC
 
 ## Gotcha's
 
@@ -187,6 +188,12 @@ Know more about buffered channels, how the goroutines waits while writing/readin
 [share memory by communicating](https://blog.golang.org/share-memory-by-communicating)
 
 Look at gotchas code for more information.
+
+### gRPC
+A simple CRUD service, to explore and explain gRPC. [Code](https://github.com/devdinu/ideas)
+[slide](https://talks.godoc.org/github.com/devdinu/ideas/grpc.slide#1)
+
+
 
 ### Disclaimer
 
