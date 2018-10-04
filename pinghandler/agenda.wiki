@@ -1,0 +1,11 @@
+=== Agenda ===
+
+* [ ] Ping
+* [ ] Ping Test with service
+* [ ] Ping Integration test
+* [ ] testify/mock
+* [ ] Questions
+
+
+* github.com/devdinu
+* @devdineshkumar
