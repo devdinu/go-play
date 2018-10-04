@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestHealtChecker(t *testing.T) {
@@ -14,10 +15,14 @@ func TestHealtChecker(t *testing.T) {
 
 	server := httptest.NewServer(h)
 
-	resp, _ := http.Get(server.URL + "/ping")
-	d, _ := ioutil.ReadAll(resp.Body)
-	response := string(d)
-	assert.Equal(t, "pong", response)
+	resp, err := http.Get(server.URL + "/ping")
+
+	require.NoError(t, err, "request failure")
+
+	body, err := ioutil.ReadAll(resp.Body)
+	require.NoError(t, err, "reading response failure")
+	assert.Equal(t, "pong", string(body))
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 
 	defer server.Close()
 }
