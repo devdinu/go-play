@@ -12,6 +12,7 @@
  - struct embedding
  - slice
  - [go testing](https://www.youtube.com/watch?v=zGhfJ88eKfw&index=1&list=PLKXvA3W4l9pHh2Pq04qCutB9e16QHMc26) (checkout branch gopherworld, and see git commits)
+ - Handler Tests
  - gRPC
 
 ## Gotcha's
@@ -194,6 +195,41 @@ A simple CRUD service, to explore and explain gRPC. [Code](https://github.com/de
 [slide](https://talks.godoc.org/github.com/devdinu/ideas/grpc.slide#1)
 
 
+### HTTP Handler Tests
+
+test for simple ping [HandlerFunc](./pinghandler/ping.go)
+
+```
+func TestPing(t *testing.T) {
+	w := httptest.NewRecorder()
+	r, _ := http.NewRequest("POST", "/ping", nil)
+
+	Ping(w, r)
+
+	assert.Equal(t, 200, w.Code)
+	assert.Equal(t, "pong", w.Body.String())
+}
+```
+Sample tests for simple `[http.Handler](./pinghandler/healthcheck.go) with testify mock
+
+```
+func TestDbError(t *testing.T) {
+	c := new(checker)
+	c.On("Ping").Times(1).Return(errors.New("someerr"))
+
+	h := HealthChecker(c)
+	w := httptest.NewRecorder()
+	r, _ := http.NewRequest("GET", "/someurl", nil)
+
+	h.ServeHTTP(w, r)
+
+	c.AssertExpectations(t)
+	assert.Equal(t, 503, w.Code)
+	assert.Equal(t, "Service Unavailable", w.Body.String())
+}
+```
+
+[code](./pinghandler/handler_test.go)
 
 ### Disclaimer
 
