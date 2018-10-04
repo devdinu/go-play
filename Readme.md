@@ -5,6 +5,7 @@
 
 
 ### Content
+ - [gotchas](#gotcha-s)
  - go1.8 features, go1.10 features
  - go tools
  - pprof, tracing
@@ -12,8 +13,8 @@
  - struct embedding
  - slice
  - [go testing](https://www.youtube.com/watch?v=zGhfJ88eKfw&index=1&list=PLKXvA3W4l9pHh2Pq04qCutB9e16QHMc26) (checkout branch gopherworld, and see git commits)
- - Handler Tests
- - gRPC
+ - [Handler Tests](#http-handler-tests)
+ - [gRPC](#grpc)
 
 ## Gotcha's
 
