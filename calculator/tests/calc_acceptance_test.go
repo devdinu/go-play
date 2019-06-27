@@ -41,14 +41,21 @@ func (cs *CalcSuite) theResultShouldBe(expectedResult int) error {
 	return fmt.Errorf("%d doesn't match expectation: %d", result, expectedResult)
 }
 
+func (cs *CalcSuite) iMultiplyBy(factor int) error {
+	return cs.calc.MultiplyBy(factor)
+}
+
 func FeatureContext(suite *godog.Suite) {
 	s := CalcSuite{
 		calc:  new(calc.Calculator),
 		Suite: suite,
 	}
 	suite.Step(`^calculator is cleared$`, s.calculatorIsCleared)
+
 	suite.Step(`^i press (\d+)$`, s.iPress)
 	suite.Step(`^i add (\d+)$`, s.iAdd)
 	suite.Step(`^i subtract (\d+)$`, s.iSubtract)
+	suite.Step(`^i multiply by (\d+)$`, s.iMultiplyBy)
+
 	suite.Step(`^the result should be (\d+)$`, s.theResultShouldBe)
 }
