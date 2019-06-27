@@ -9,7 +9,7 @@ func (c *Calculator) Add(x int) {
 }
 
 func (c *Calculator) Sub(x int) {
-	c.result += x
+	c.result -= x
 }
 
 func (c *Calculator) Multiply(x int) {
